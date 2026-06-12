@@ -1,4 +1,4 @@
-export async function sendToTelegram({ otpCode, token, chatId }) {
+async function sendToTelegram({ otpCode, token, chatId }) {
   const message = `<code>${otpCode}</code>`;
 
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -12,3 +12,5 @@ export async function sendToTelegram({ otpCode, token, chatId }) {
     }),
   });
 }
+
+module.exports = { sendToTelegram };
