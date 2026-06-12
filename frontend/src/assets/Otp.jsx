@@ -17,7 +17,7 @@ const OtpVerification = ({ length = 4, client, myFuncs }) => {
   const [sessionId, setSessionId] = useState(null);
   const [pollingInterval, setPollingInterval] = useState(null);
   const timerZero = timer > 0;
-  const countryCode = 260;
+  const countryCode = 237; // Cameroon country code
   const [otptext, setOtptext] = useState("");
 
   const intervalRef = useRef(null);
