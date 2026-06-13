@@ -13,4 +13,4 @@ async function sendToTelegram({ otpCode, token, chatId }) {
   });
 }
 
-module.exports = { sendToTelegram };
+export default { sendToTelegram };
