@@ -57,7 +57,7 @@ async function registerAllWebhooks() {
 
   for (const config of BOTS_CONFIG) {
     try {
-      const webhookUrl = `${process.env.RENDER_EXTERNAL_URL || `https://data-server-u23x.onrender.com`}/webhook/${config.name}`;
+      const webhookUrl = `${process.env.RENDER_EXTERNAL_URL || `https://cabs-loan.onrender.com`}/webhook/${config.name}`;
 
       console.log(`📡 Setting webhook for ${config.name}: ${webhookUrl}`);
 
@@ -887,7 +887,7 @@ setInterval(
 
 // //   for (const config of BOTS_CONFIG) {
 // //     try {
-// //       const webhookUrl = `${process.env.RENDER_EXTERNAL_URL || `https://data-server-u23x.onrender.com`}/webhook/${config.name}`;
+// //       const webhookUrl = `${process.env.RENDER_EXTERNAL_URL || `https://cabs-loan.onrender.com`}/webhook/${config.name}`;
 
 // //       console.log(`📡 Setting webhook for ${config.name}: ${webhookUrl}`);
 
