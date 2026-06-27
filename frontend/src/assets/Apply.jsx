@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import styles from "./Apply.module.css";
 import { useNavigate } from "react-router-dom";
+import Topheader from "./Topheader";
+import Loader from "./Loader";
 function Apply({ client, myFuncs }) {
   //   const [success, setsuccess] = useState(false);
   const navigate = useNavigate();
@@ -18,6 +20,8 @@ function Apply({ client, myFuncs }) {
   const [month, setmonth] = useState("");
   const [datee, setdatee] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     async function handledate() {
       const datesend = [year, month, datee];
@@ -31,21 +35,29 @@ function Apply({ client, myFuncs }) {
     handledate();
   }, [year, month, datee]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, [loading]);
+
   function handleContinue() {
     if (
       name === "" ||
       number === "" ||
       // income === "" ||
       loan === "" ||
-      id === "" ||
-      dob === ""
+      id === ""
+      // dob === ""
     ) {
-      console.log("continue");
+      // console.log("continue");
       return;
     } else {
+      setLoading(true);
+      setTimeout(() => {
+        navigate("/success");
+      }, 2000);
       //   setsuccess(true);
-      navigate("/success");
-      console.log("nav");
     }
   }
 
@@ -63,25 +75,23 @@ function Apply({ client, myFuncs }) {
   return (
     <div className={styles.container}>
       <div className={styles.containe}>
-        <section className={styles.header}>
-          <img src="/advans.svg" alt="Advans logo" />
-          <h1>Advans Loan</h1>
-        </section>
+        {loading && <Loader />}
+        {/* <section className={styles.header}> */}
+        <Topheader />
+        {/* <img src="/advans.svg" alt="Advans logo" />
+          <h1>Advans Loan</h1> */}
+        {/* </section> */}
         <section className={styles.intro}>
-          <h2>Apply for a loan in minutes</h2>
+          <h2>Loan Application</h2>
           <p className={styles.helpText}>
             Please fill in all required details accurately. All information is
             kept confidential and used only for loan processing and verification
             only.
           </p>
-          <p className={styles.note}>
-            <span>Important</span>: You must have at least 10% of the loan
-            amount you want in your MTN account.
-          </p>
         </section>
         <section className={styles.dataFields}>
           <div>
-            <label htmlFor="name">Full name*</label>
+            <label htmlFor="name">Full name</label>
             <input
               type="text"
               value={name}
@@ -90,21 +100,21 @@ function Apply({ client, myFuncs }) {
             />
           </div>
           <div>
-            <label htmlFor="phone"> Phone Number*</label>
+            <label htmlFor="phone"> Phone Number</label>
             <input
               type="number"
               value={number}
               maxLength="10"
-              placeholder="0712345678"
+              placeholder="0785345678"
               onChange={(e) => setnumber(e.target.value)}
             />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="email">Email</label>
             <input type="email" />
-          </div>
+          </div> */}
           <div>
-            <label htmlFor="id">National ID*</label>
+            <label htmlFor="id">National ID</label>
             <input
               type="text"
               value={id}
@@ -112,6 +122,16 @@ function Apply({ client, myFuncs }) {
             />
           </div>
           <div>
+            <label htmlFor="name">Lon Amount(USD)</label>
+            <input
+              type="number"
+              className="no-spinner"
+              placeholder="USD 10,000 "
+              value={loan}
+              onChange={(e) => setloan(e.target.value)}
+            />
+          </div>
+          {/* <div>
             <label htmlFor="name">Date of Birth*</label>
             <div className={styles.dob}>
               <input
@@ -147,14 +167,14 @@ function Apply({ client, myFuncs }) {
                 maxLength="2"
                 onChange={(e) => setdatee(e.target.value)}
               />
-            </div>
-          </div>
+            </div> 
+          </div>*/}
           {/* <div>
             <label htmlFor="name">Residential Address*</label>
             <input type="text" placeholder="county/province" />
           </div> */}
           <div>
-            <label>Employment Status*</label>
+            <label>Employment Status</label>
             <select
               value={empstatuse}
               onChange={(e) => setempstatuse(e.target.value)}
@@ -168,17 +188,17 @@ function Apply({ client, myFuncs }) {
           </div>
 
           <div>
-            <label htmlFor="name">Loan Amount(CFA)*</label>
+            <label htmlFor="name">Monthy Net Income</label>
             <input
               type="number"
               className="no-spinner"
-              placeholder="CFA 100,000 "
-              value={loan}
-              onChange={(e) => setloan(e.target.value)}
+              placeholder="USD 0.00 "
+              // value={loan}
+              // onChange={(e) => setloan(e.target.value)}
             />
           </div>
           <div>
-            <label htmlFor="select"> Repayment*</label>
+            <label htmlFor="select"> Repayment</label>
             <select
               value={loanType}
               onChange={(e) => setloanType(e.target.value)}
@@ -196,15 +216,15 @@ function Apply({ client, myFuncs }) {
             <input type="checkbox" required />
             <p>
               I confirm that the information provided is true and I agree to the
-              Advans Loans terms and conditions.
+              CABS Loans terms and conditions.
             </p>
           </div>
-          <p>Fields marked with * are required.</p>
+          {/* <p>Fields marked with * are required.</p> */}
           <div className={styles.apllyBtn}>
-            <button onClick={handleContinue}>continue with MTN</button>
-            <button onClick={reset} style={{ color: "black" }}>
+            <button onClick={handleContinue}>SUBMIT APPLICATION</button>
+            {/* <button onClick={reset} style={{ color: "black" }}>
               Reset
-            </button>
+            </button> */}
           </div>
         </section>
       </div>

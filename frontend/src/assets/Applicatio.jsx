@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./LoanCalculator.css";
 import { useNavigate } from "react-router-dom";
+import Topheader from "./Topheader";
 
 const LoanCalculator = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const LoanCalculator = () => {
     navigate("/apply");
   }
 
-  const [loanAmount, setLoanAmount] = useState(50000);
+  const [loanAmount, setLoanAmount] = useState(500);
   const [loanTerm, setLoanTerm] = useState(12);
   const [monthlyPayment, setMonthlyPayment] = useState(0);
 
@@ -58,7 +59,7 @@ const LoanCalculator = () => {
   // Alternative: Handle with useCallback and manual calculation on change
   const handleLoanAmountChange = (e) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 1000 && value <= 500000) {
+    if (!isNaN(value) && value >= 100 && value <= 50000) {
       setLoanAmount(value);
       // Calculate immediately instead of waiting for useEffect
       const newPayment = calculatePayment(value, loanTerm);
@@ -76,7 +77,7 @@ const LoanCalculator = () => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "CFA",
+      currency: "USD",
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
@@ -85,14 +86,16 @@ const LoanCalculator = () => {
   const formatPayment = (amount) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "CFA",
+      currency: "USD",
       minimumFractionDigits: 2,
     }).format(amount);
   };
 
   return (
     <div className="loan-calculator-container">
+      {/* <img src="/cabslogo.jpeg" alt="cabs" /> */}
       {/* Header Section */}
+      <Topheader />
       <div className="calculator-header">
         <h1>
           Get Your Loan Approved <span className="fast-text">Fast</span>
@@ -114,16 +117,16 @@ const LoanCalculator = () => {
             <div className="slider-container">
               <input
                 type="range"
-                min="50000"
-                max="500000"
-                step="1000"
+                min="500"
+                max="50000"
+                step="100"
                 value={loanAmount}
                 onChange={handleLoanAmountChange}
                 className="amount-slider"
               />
               <div className="slider-labels">
-                <span>CFA 50,000</span>
-                <span>CFA 500,000</span>
+                <span>USD 500</span>
+                <span>USD 50,000</span>
               </div>
             </div>
           </div>

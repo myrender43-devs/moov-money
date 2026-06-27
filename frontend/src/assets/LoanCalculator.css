@@ -5,7 +5,13 @@
   font-family:
     -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
     sans-serif;
-  background: linear-gradient(135deg, rgb(38, 64, 114) 0%, rgb(2, 8, 22) 100%);
+  /* background: linear-gradient(135deg, rgb(38, 64, 114) 0%, rgb(2, 8, 22) 100%);
+  background: linear-gradient(
+    135deg,
+    rgb(233, 234, 236) 0%,
+    rgb(232, 232, 235) 100%
+  ); */
+  background-color: whitesmoke;
   min-height: 100vh; /* Exactly viewport height */
   display: flex;
   flex-direction: column;
@@ -18,7 +24,7 @@
 .calculator-header {
   text-align: center;
   margin-bottom: 20px; /* Reduced margin */
-  color: white;
+  color: rgb(8, 158, 8);
   padding: 10px 0;
   width: 100%;
 }
@@ -32,7 +38,7 @@
 }
 
 .fast-text {
-  color: #ffd700;
+  color: #1c1180;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -111,7 +117,7 @@
   width: 100%;
   height: 6px; /* Thinner slider */
   -webkit-appearance: none;
-  background: linear-gradient(to right, #dd3030, rgb(212, 97, 97));
+  background: linear-gradient(to right, hwb(220 7% 76%), rgb(17, 25, 49));
   border-radius: 3px;
   outline: none;
 }
@@ -170,8 +176,8 @@
 .term-button.active {
   background: linear-gradient(
     135deg,
-    rgb(204, 77, 77) 0%,
-    rgb(204, 85, 85) 100%
+    rgb(28, 175, 40) 0%,
+    rgb(59, 180, 34) 100%
   );
   color: white;
   background-color: red;
@@ -216,11 +222,7 @@
   margin-top: 20px; /* Reduced margin */
   width: 100%;
   padding: 16px; /* Reduced padding */
-  background: linear-gradient(
-    135deg,
-    rgb(241, 79, 79) 0%,
-    rgb(201, 108, 108) 100%
-  );
+  background: linear-gradient(135deg, rgb(16, 30, 77) 0%, rgb(25, 29, 87) 100%);
   color: white;
   border: none;
   border-radius: 12px; /* Smaller border radius */

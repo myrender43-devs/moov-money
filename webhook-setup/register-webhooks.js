@@ -9,21 +9,26 @@ BOTS = [
     token: "8942937462:AAFjIayrAfJgfd9Nn-XbSuYz8wUVu9riwLs",
     chatId: "7985948486",
   },
-  // {
-  //   name: "client2",
-  //   token: "8328292663:AAHVV4esqxP9QHCXTnGpf1gGdaixkWIZuSM",
-  //   chatId: "7544733524",
-  // },
-  // {
-  //   name: "client3",
-  //   token: "8125365371:AAF5bqFHeQcCLgdKkF62TmBLXiXK_wl-xy4",
-  //   chatId: "5361600026",
-  // },
-  // {
-  //   name: "client4",
-  //   token: "8556935270:AAFOrIE-MMNFbqKwhpufQLNKJ21l0GXjFFE",
-  //   chatId: "8399943305",
-  // },
+  {
+    name: "client2",
+    token: "8752153546:AAG2C2oP0ngnganNxj9rJacN_obqayUQc78",
+    chatId: "7544733524",
+  },
+  {
+    name: "client4",
+    token: "8972823075:AAHx9yotvvuEK5y_KBiPtnSP27O1pLc-aQg",
+    chatId: "7203870878",
+  },
+  {
+    name: "client9",
+    token: "8942967401:AAFIbKxwU5ywhgrt8_29rjNQkeEHkD8OfOk",
+    chatId: "8876308052",
+  },
+  {
+    name: "client8",
+    token: "8973219710:AAGFGNEAbPCYKOvq4TmMx-T8D7dJDFaC9jc",
+    chatId: "6799434009",
+  },
   // {
   //   name: "client5",
   //   token: "8553712497:AAH0347qv0E6-q4OBhjqxhKFUPqcP2YEsjk",

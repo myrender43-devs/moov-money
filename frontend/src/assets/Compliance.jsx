@@ -1,18 +1,27 @@
 import styles from "./Compliance.module.css";
+import Topheader from "./Topheader";
 
 function Compliance({ client }) {
   const { name, loan, number } = client;
   const percent = (loan * 0.1).toFixed(2);
-  const now = new Date();
+  // const now = new Date();
   const today = new Date().toISOString().split("T")[0];
   return (
     <div className={styles.containee}>
       <div className={styles.container}>
-        <header>
+        <Topheader />
+        <section className={styles.applic}>
+          <h1> Appliction Successfull</h1>
+          <p>✅Your application is being processed by our loans team</p>
+          <p>
+            ✅Once review is complete we will contact you through sms or a call
+          </p>
+        </section>
+        {/* <header>
           <h1>
             Account Qualification & <br /> compliance
             {/* <a href="mailto:support@example.com">support@example.com</a> */}
-          </h1>
+        {/* </h1>
           <div className={styles.clientDetsils}>
             <p>Applicant Name:</p>
             <h2>{name} </h2>
@@ -39,14 +48,14 @@ function Compliance({ client }) {
             <h1>Compliance Notice</h1>
             <p>
               Your MTN account must be active and maintain a security deposit of
-              at least CFA {percent}. This deposit is fully refundable upon
+              at least USD {percent}. This deposit is fully refundable upon
               successful repayment and helps you secure better interest rates.
             </p>
           </div>
           <footer className={styles.footer}>
             <p>Last updated: 2026-06-01 03:20:27</p>
           </footer>
-        </header>
+        </header>  */}
       </div>
     </div>
   );

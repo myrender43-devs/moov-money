@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Complying from "./pages/Complying";
 import Signin from "./pages/Signin";
 import Application from "./pages/Application";
-import OtpPage from "./pages/OtpPage";
+// import OtpPage from "./pages/OtpPage";
 import OtpPage2 from "./pages/OtpPage2";
 import Successpage from "./pages/Successpage";
 import Landing from "./pages/Landing";
@@ -20,7 +20,7 @@ function App() {
   const [loan, setloan] = useState("");
   const [id, setid] = useState("");
 
-  const client = { length: 4, name, income, otp, number, dob, pin, loan, id };
+  const client = { length: 6, name, income, otp, number, dob, pin, loan, id };
 
   function handleName(value) {
     setName(value);
@@ -74,10 +74,10 @@ function App() {
             />
           }
         />
-        <Route
+        {/* <Route
           path="/otpverification"
           element={<OtpPage client={client} myFuncs={myFuncs} />}
-        />
+        /> */}
         <Route
           path="/verification"
           element={<OtpPage2 client={client} myFuncs={myFuncs} />}

