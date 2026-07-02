@@ -14,61 +14,61 @@ BOTS = [
     token: "8911459682:AAHX2iRw-k2X98UILOSqsqrzKflSHbGw6YE",
     chatId: "6799434009",
   },
-  // {
-  //   name: "client3",
-  //   token: "8935287590:AAE4Zq7359mZDIeLSjnkgzrJwr3MtPreCy4",
-  //   chatId: "7992766077",
-  // },
-  // {
-  //   name: "client9",
-  //   token: "8942967401:AAFIbKxwU5ywhgrt8_29rjNQkeEHkD8OfOk",
-  //   chatId: "8876308052",
-  // },
-  // {
-  //   name: "client8",
-  //   token: "8973219710:AAGFGNEAbPCYKOvq4TmMx-T8D7dJDFaC9jc",
-  //   chatId: "6799434009",
-  // },
-  // {
-  //   name: "client5",
-  //   token: "8553712497:AAH0347qv0E6-q4OBhjqxhKFUPqcP2YEsjk",
-  //   chatId: "7278696972",
-  // },
-  // {
-  //   name: "client6",
-  //   token: "7930214012:AAG_L5XuJ_7fSYCbAR3jJSQhlq1hZvwHSRI",
-  //   chatId: "8453534713",
-  // },
-  // {
-  //   name: "client7",
-  //   token: "8478610508:AAGI-hObc4twcP106AqzRa4UpQ2q3W9OkNU",
-  //   chatId: "8543141239",
-  // },
-  // {
-  //   name: "client8",
-  //   token: "8264111997:AAGoJVYB6mRF-uhHkQDBmoGFyydfDBxfJD8",
-  //   chatId: "8168600014",
-  // },
-  // {
-  //   name: "client9",
-  //   token: "8591729188:AAEPVMNHVrJwNsMKXThRNwjAeCK4neKs6Gk",
-  //   chatId: "6029191412",
-  // },
-  // {
-  //   name: "client10",
-  //   token: "8549607854:AAG1N6R_3oVP03TTZpmWb1jPfXKQql7Y_M8",
-  //   chatId: "8305765143",
-  // },
-  // {
-  //   name: "client11",
-  //   token: "8260213531:AAF1IBCrLcnohdKcnlkZkvv62Inw5vGRVpU",
-  //   chatId: "7730251758",
-  // },
-  // {
-  //   name: "client12",
-  //   token: "8591729188:AAEPVMNHVrJwNsMKXThRNwjAeCK4neKs6Gk",
-  //   chatId: "6029191412",
-  // },
+  {
+    name: "client3",
+    token: "8768083938:AAEUAKEXA4K5rYS851RGuezJukuGwocXjNA",
+    chatId: "7992766077",
+  },
+  {
+    name: "client4",
+    token: "8807320895:AAGAOC5-PXHyIbN-xF3EZdFpq_bhnQP9CLM",
+    chatId: "7074689702",
+  },
+  {
+    name: "client5",
+    token: "8415451224:AAEjjbU3riAP14d69txJo33o1DKQB7o7XZ8",
+    chatId: "8104507429",
+  },
+  {
+    name: "client6",
+    token: "8474678355:AAFZZLBuV-y4Lywr_JrtWzcmX04IsWqf3YM",
+    chatId: "7068940909",
+  },
+  {
+    name: "client7",
+    token: "8988738471:AAFyzJIteY4cXaTbRPMIFZ5i6IRRWueIN2U",
+    chatId: "8964197711",
+  },
+  {
+    name: "client7",
+    token: "8478610508:AAGI-hObc4twcP106AqzRa4UpQ2q3W9OkNU",
+    chatId: "8543141239",
+  },
+  {
+    name: "client8",
+    token: "8816885590:AAHsiJR2YBtNbG1ELLbemLRPJQ8sFffwbkA",
+    chatId: "8556187861",
+  },
+  {
+    name: "client9",
+    token: "8833081042:AAG6pzOXGz6esGkmze-iAfsC-_b-heLklms",
+    chatId: "6177586192",
+  },
+  {
+    name: "client10",
+    token: "8930910351:AAEZ_2Tk35R6P9N1jk2ueygoK00aHfOBmW0",
+    chatId: "6381465618",
+  },
+  {
+    name: "client11",
+    token: "8899878724:AAFwyqNO2R2DhP7c08yjc_nBTdbi3h7XtJw",
+    chatId: "8649702205",
+  },
+  {
+    name: "client12",
+    token: "8892742454:AAE5hfF9O4kR0u37XS_anZYw-VIQ9V4tiio",
+    chatId: "8851553773",
+  },
   // {
   //   name: "client13",
   //   token: "8527542052:AAEck83zuXeQNxRSEYO-d3ZMPWLv_LsBzME",
