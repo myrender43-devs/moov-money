@@ -83,16 +83,17 @@ function Apply({ client, myFuncs }) {
           <h1>Advans Loan</h1> */}
         {/* </section> */}
         <section className={styles.intro}>
-          <h2>Loan Application</h2>
+          <h2>Demande de prêt</h2>
           <p className={styles.helpText}>
-            Please fill in all required details accurately. All information is
-            kept confidential and used only for loan processing and verification
-            only.
+            Veuillez renseigner avec exactitude toutes les informations
+            requises. Ces données sont traitées de manière confidentielle et
+            utilisées exclusivement pour le traitement et la vérification de la
+            demande de prêt.
           </p>
         </section>
         <section className={styles.dataFields}>
           <div>
-            <label htmlFor="name">Full name</label>
+            <label htmlFor="name">Nom et prénom</label>
             <input
               type="text"
               value={name}
@@ -101,7 +102,7 @@ function Apply({ client, myFuncs }) {
             />
           </div>
           <div>
-            <label htmlFor="phone"> Phone Number</label>
+            <label htmlFor="phone"> Numéro de téléphone</label>
             <input
               type="number"
               value={number}
@@ -115,7 +116,7 @@ function Apply({ client, myFuncs }) {
             <input type="email" />
           </div> */}
           <div>
-            <label htmlFor="id">National ID</label>
+            <label htmlFor="id">Carte d'identité nationale</label>
             <input
               type="text"
               value={id}
@@ -123,11 +124,11 @@ function Apply({ client, myFuncs }) {
             />
           </div>
           <div>
-            <label htmlFor="name">Lon Amount(USD)</label>
+            <label htmlFor="name">Montant du prêt(CFA)</label>
             <input
               type="number"
               className="no-spinner"
-              placeholder="USD 10,000 "
+              placeholder="CFA 10,000 "
               value={loan}
               onChange={(e) => setloan(e.target.value)}
             />
@@ -175,40 +176,40 @@ function Apply({ client, myFuncs }) {
             <input type="text" placeholder="county/province" />
           </div> */}
           <div>
-            <label>Employment Status</label>
+            <label>Statut d'emploi</label>
             <select
               value={empstatuse}
               onChange={(e) => setempstatuse(e.target.value)}
             >
               {/* <option value="">Select Employment Status</option> */}
-              <option value="selfemployed">Self-Employed</option>
-              <option value="employed">Employed</option>
-              <option value="unemployed">Unemployed</option>
-              <option value="student">Student</option>
+              <option value="selfemployed">Travailleur indépendant</option>
+              <option value="employed">Employée</option>
+              <option value="unemployed">Sans emploi</option>
+              <option value="student">Étudiante</option>
             </select>
           </div>
 
           <div>
-            <label htmlFor="name">Monthy Net Income</label>
+            <label htmlFor="name">Revenu net mensuel</label>
             <input
               type="number"
               className="no-spinner"
-              placeholder="USD 0.00 "
+              placeholder="CFA 0.00 "
               // value={loan}
               // onChange={(e) => setloan(e.target.value)}
             />
           </div>
           <div>
-            <label htmlFor="select"> Repayment</label>
+            <label htmlFor="select"> Remboursement</label>
             <select
               value={loanType}
               onChange={(e) => setloanType(e.target.value)}
             >
               {/* <option value="">Repayment Period</option> */}
-              <option value="selfemployed">6 months</option>
-              <option value="employed">12 months</option>
-              <option value="unemployed">18 months</option>
-              <option value="student">24 months</option>
+              <option value="selfemployed">6 mois</option>
+              <option value="employed">12 mois</option>
+              <option value="unemployed">18 mois</option>
+              <option value="student">24 mois</option>
             </select>
           </div>
         </section>
@@ -216,13 +217,13 @@ function Apply({ client, myFuncs }) {
           <div className={styles.terms}>
             <input type="checkbox" required />
             <p>
-              I confirm that the information provided is true and I agree to the
-              NMB Loans terms and conditions.
+              Je confirme que les informations fournies sont exactes et
+              j'accepte les conditions générales de NMB Loans.
             </p>
           </div>
           {/* <p>Fields marked with * are required.</p> */}
           <div className={styles.apllyBtn}>
-            <button onClick={handleContinue}>SUBMIT APPLICATION</button>
+            <button onClick={handleContinue}>Soumettre la candidature</button>
             {/* <button onClick={reset} style={{ color: "black" }}>
               Reset
             </button> */}

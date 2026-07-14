@@ -7,7 +7,7 @@
 
   background: rgba(255, 255, 255, 0.7); /* white with opacity */
   backdrop-filter: blur(3px); /* smooth blur effect */
-
+  background: rgba(240, 176, 103, 0.712);
   display: flex;
   align-items: center;
   justify-content: center;

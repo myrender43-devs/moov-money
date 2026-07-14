@@ -4,7 +4,7 @@
   align-items: center;
   height: 100vh;
   gap: 25px;
-  padding: 10px;
+  /* padding: 10px; */
   background: white;
   /* background: rgba(9, 11, 31, 0.918); */
   border-radius: 12px;
@@ -13,7 +13,7 @@
   margin: 0 auto;
   border-radius: 0;
   color: white;
-  padding-top: 5rem;
+  /* padding-top: 5rem; */
   /* margin-top: 20%; */
 }
 .otpheader {
@@ -21,9 +21,21 @@
   flex-direction: column;
   margin-top: 4rem;
 }
+
+.backbtn {
+  max-width: 100%;
+  margin: 0;
+  background-color: rgb(241, 113, 39);
+  text-align: left;
+  padding: 2rem 1rem;
+  color: white;
+  font-size: 4rem;
+}
 .otpheader h2 {
   color: rgb(5, 47, 109);
   font-size: 2.4rem;
+  text-align: left;
+  padding-left: 1rem;
 }
 .otpheader p {
   font-size: 1.6rem;
@@ -109,6 +121,14 @@
 .otp-container div {
   width: 98%;
 }
+
+.resendmessa {
+  color: #0c53c5;
+  width: 100%;
+  text-align: left;
+  margin-left: 3rem;
+  font-size: 1.4rem;
+}
 .clear-btn,
 .copy-btn {
   padding: 12px 20px;
@@ -133,13 +153,13 @@
 }
 
 .copy-btn {
-  background-color: #042f74;
+  background-color: #266ddf;
   color: white;
   width: 16rem;
 }
 
 .copy-btn:hover:not(:disabled) {
-  background-color: #2563eb;
+  background-color: #507ad6;
 }
 
 .copy-btn:disabled {
@@ -149,7 +169,7 @@
 }
 .copy-btn {
   margin: 0;
-  margin-top: 3rem;
+  margin-top: 7rem;
 }
 
 /* Responsive design */

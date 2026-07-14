@@ -7,7 +7,7 @@ function Topheader() {
       <header className={styles.topHeader}>
         <img src="/cabslogo.jpeg" alt="cabs" />
         <div>
-          <User size={36} color="blue" strokeWidth={2} /> <h1>Welcome </h1>
+          <User size={36} color="blue" strokeWidth={2} /> <h1>Bienvenue </h1>
         </div>
       </header>
     </div>

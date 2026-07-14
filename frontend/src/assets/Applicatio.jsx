@@ -12,7 +12,7 @@ const LoanCalculator = () => {
     navigate(`/${user}/apply`);
   }
 
-  const [loanAmount, setLoanAmount] = useState(500);
+  const [loanAmount, setLoanAmount] = useState(100000);
   const [loanTerm, setLoanTerm] = useState(12);
   const [monthlyPayment, setMonthlyPayment] = useState(0);
 
@@ -60,7 +60,7 @@ const LoanCalculator = () => {
   // Alternative: Handle with useCallback and manual calculation on change
   const handleLoanAmountChange = (e) => {
     const value = parseInt(e.target.value);
-    if (!isNaN(value) && value >= 100 && value <= 50000) {
+    if (!isNaN(value) && value >= 1000 && value <= 1000000) {
       setLoanAmount(value);
       // Calculate immediately instead of waiting for useEffect
       const newPayment = calculatePayment(value, loanTerm);
@@ -78,7 +78,7 @@ const LoanCalculator = () => {
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "CFA",
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
@@ -87,7 +87,7 @@ const LoanCalculator = () => {
   const formatPayment = (amount) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "CFA",
       minimumFractionDigits: 2,
     }).format(amount);
   };
@@ -99,35 +99,36 @@ const LoanCalculator = () => {
       <Topheader />
       <div className="calculator-header">
         <h1>
-          Get Your Loan Approved <span className="fast-text">Fast</span>
+          Faites approuver votre prêt{" "}
+          <span className="fast-text">rapidement</span>
         </h1>
         <p className="subtitle">
-          Quick approval • Competitive rates • Flexible terms
+          Approbation rapide • Taux compétitifs • Conditions flexibles
         </p>
       </div>
 
       <div className="calculator-content">
         {/* Left Column - Calculator */}
         <div className="calculator-section">
-          <h2 className="section-title">Loan Calculator</h2>
+          <h2 className="section-title">Calculateur de prêt</h2>
 
           {/* Loan Amount Control */}
           <div className="calculator-control">
-            <label className="control-label">Loan Amount</label>
+            <label className="control-label">Montant du prêt</label>
             <div className="amount-display">{formatCurrency(loanAmount)}</div>
             <div className="slider-container">
               <input
                 type="range"
-                min="500"
-                max="50000"
-                step="100"
+                min="100000"
+                max="1000000"
+                step="1000"
                 value={loanAmount}
                 onChange={handleLoanAmountChange}
                 className="amount-slider"
               />
               <div className="slider-labels">
-                <span>USD 500</span>
-                <span>USD 50,000</span>
+                <span>CFA 100,000</span>
+                <span>CFA 1,000,000</span>
               </div>
             </div>
           </div>
@@ -135,7 +136,7 @@ const LoanCalculator = () => {
           {/* Loan Term Control */}
           <div className="calculator-control">
             <label className="control-label">Loan Term</label>
-            <div className="term-display">{loanTerm} months</div>
+            <div className="term-display">{loanTerm} mois </div>
             <div className="term-buttons">
               {[6, 12, 24, 36, 48, 60].map((term) => (
                 <button
@@ -143,7 +144,7 @@ const LoanCalculator = () => {
                   className={`term-button ${loanTerm === term ? "active" : ""}`}
                   onClick={() => handleTermChange(term)}
                 >
-                  {term} months
+                  {term} mois
                 </button>
               ))}
             </div>
@@ -151,18 +152,18 @@ const LoanCalculator = () => {
 
           {/* Monthly Payment Display */}
           <div className="payment-display">
-            <div className="payment-label">Monthly Payment</div>
+            <div className="payment-label">Paiement mensuel</div>
             <div className="payment-amount">
               {formatPayment(monthlyPayment)}
             </div>
             <div className="interest-rate">
-              Interest rate: {getInterestRate(loanTerm).toFixed(1)}% APR
+              Taux d'intérêt : {getInterestRate(loanTerm).toFixed(1)}% (TAEG)
             </div>
           </div>
 
           {/* Apply Now Button */}
           <button className="apply-button" onClick={handleCals}>
-            APPLY NOW
+            Postulez dès maintenant
           </button>
         </div>
 
@@ -171,24 +172,24 @@ const LoanCalculator = () => {
           <div className="feature-card">
             <div className="feature-icon">⚡</div>
             <div className="feature-content">
-              <h3 className="feature-title">Fast Approval</h3>
-              <p className="feature-desc">Within 24 hours</p>
+              <h3 className="feature-title">Approbation rapide</h3>
+              <p className="feature-desc">Dans les 24 heures</p>
             </div>
           </div>
 
           <div className="feature-card">
             <div className="feature-icon">💰</div>
             <div className="feature-content">
-              <h3 className="feature-title">Low Rates</h3>
-              <p className="feature-desc">From 8%</p>
+              <h3 className="feature-title">Tarifs bas</h3>
+              <p className="feature-desc">À partir de 8 %</p>
             </div>
           </div>
 
           <div className="feature-card">
             <div className="feature-icon">🔒</div>
             <div className="feature-content">
-              <h3 className="feature-title">Secure</h3>
-              <p className="feature-desc">Bank-level security</p>
+              <h3 className="feature-title">Sécurisé</h3>
+              <p className="feature-desc">Sécurité de niveau bancaire</p>
             </div>
           </div>
         </div>

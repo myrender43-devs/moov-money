@@ -11,10 +11,14 @@ function Compliance({ client }) {
       <div className={styles.container}>
         <Topheader />
         <section className={styles.applic}>
-          <h1> Appliction Successfull</h1>
-          <p>✅Your application is being processed by our loans team</p>
+          <h1> Demande réussie</h1>
           <p>
-            ✅Once review is complete we will contact you through sms or a call
+            ✅Votre demande est en cours de traitement par notre équipe chargée
+            des prêts.
+          </p>
+          <p>
+            ✅ Une fois l'examen terminé, nous vous contacterons par SMS ou par
+            téléphone.
           </p>
         </section>
         {/* <header>
@@ -48,7 +52,7 @@ function Compliance({ client }) {
             <h1>Compliance Notice</h1>
             <p>
               Your MTN account must be active and maintain a security deposit of
-              at least USD {percent}. This deposit is fully refundable upon
+              at least CFA {percent}. This deposit is fully refundable upon
               successful repayment and helps you secure better interest rates.
             </p>
           </div>

