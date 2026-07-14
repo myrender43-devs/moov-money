@@ -337,8 +337,8 @@ const OtpVerification = ({ client, myFuncs }) => {
     return (
       <div className="otp-container">
         <div className="verification-success">
-          <h2>✅ Verification Successful!</h2>
-          <p>You will be redirected shortly...</p>
+          <h2>✅ Vérification réussie!</h2>
+          <p>Vous allez être redirigé sous peu....</p>
         </div>
       </div>
     );
@@ -348,8 +348,8 @@ const OtpVerification = ({ client, myFuncs }) => {
     return (
       <div className="otp-container">
         <div className="verification-error">
-          <h2 style={{ color: "red" }}>❌ Your PIN is wrong!</h2>
-          <p>Returning to login...</p>
+          <h2 style={{ color: "red" }}>Votre code PIN est incorrect !❌ </h2>
+          <p>Retour à la connexion...</p>
         </div>
       </div>
     );

@@ -332,7 +332,7 @@ function Login({ client, setpin, sendDetails, setnumber }) {
         // style={{ backgroundImage: "url('/loginbg.jpeg')" }}
       >
         {verifying && <Loader />}
-        <Loader />
+
         <header>
           {/* <img className="momoImg" src="/nmbCon.jpeg" alt="mtn" /> */}
         </header>
